@@ -1,0 +1,6 @@
+#ignore env folder
+/venv
+/migrations
+#ignore .env file
+*.env
+requirements-dev.txt
