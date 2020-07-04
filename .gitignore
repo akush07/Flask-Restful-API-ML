@@ -1,6 +1,7 @@
 #ignore env folder
 /venv
 /migrations
+/.idea
 #ignore .env file
 *.env
 requirements-dev.txt
