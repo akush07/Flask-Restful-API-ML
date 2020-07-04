@@ -13,6 +13,8 @@ from api.utils.extensions import db, jwt, cache, limiter
 from api.routes.users import Registration, UserResource, MeResource, UserActivate
 from api.routes.token import TokenResource, RefreshResource, RevokeResource, black_list
 from api.routes.models import RunModel
+import flask_monitoringdashboard as dashboard
+
 
 def create_app():
     env = os.environ.get('ENV', 'Development')
@@ -37,6 +39,7 @@ def register_extensions(app):
     jwt.init_app(app)
     cache.init_app(app)
     limiter.init_app(app)
+    dashboard.bind(app)
 
     @jwt.token_in_blacklist_loader
     def check_if_token_in_blacklist(decrypted_token):
@@ -54,6 +57,7 @@ def register_resources(app):
     api.add_resource(RefreshResource, '/refresh')
     api.add_resource(RevokeResource, '/revoke')
     api.add_resource(RunModel, '/classify')
+
 
 if __name__ == '__main__':
     app = create_app()
