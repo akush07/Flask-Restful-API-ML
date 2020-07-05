@@ -22,7 +22,7 @@ class MailgunApi:
             to = [to, ]
 
         data = {
-            'from': 'SmileCook <no-reply@{}>'.format(self.domain),
+            'from': 'APIService <no-reply@{}>'.format(self.domain),
             'to': to,
             'subject': subject,
             'text': text,
